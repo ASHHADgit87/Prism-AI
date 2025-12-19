@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import type { Project } from '../types';
-import { Loader2Icon, MessageSquareIcon, XIcon } from 'lucide-react';
+import { Loader2Icon, MessageSquareIcon, SmartphoneIcon, XIcon } from 'lucide-react';
 import { dummyConversations, dummyProjects } from '../assets/assets';
 
 const Projects = () => {
@@ -51,7 +51,7 @@ const Projects = () => {
         </div>
         {/*Middle*/}
         <div>
-
+          <SmartphoneIcon onClick={()=> setDevice('phone')} className={`size-6 p-1 rounded cursor-pointer ${device === 'phone' ? 'bg-gray-700' : '' }`} />
         </div>
         {/*Right*/}
         <div>

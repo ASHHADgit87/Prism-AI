@@ -1,0 +1,16 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 165 35" width="165" height="35">
+	<defs>
+		<image  width="51" height="28" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAAAcBAMAAAA+dZr6AAAAAXNSR0IB2cksfwAAAA9QTFRFAAAA////AAAAAAAAAAAAgmvSVgAAAAV0Uk5TAP8ODw3v2U04AAAAyUlEQVR4nG1S2w3EMAgD6QYIM9z+I90MZIBKORLzatV8JRiwDWHyw4PyKCIVX7PuGpBEoh+8eV88n2jMwCzEJAlYL6XC+PvrjSLNCJUz/rm2gCpLiMeaUjL3m4sFzvQBHf5XCMrkxNL4gYDEpLRDcCYuCGXm40yjF3kZxIvfqZXBcmeaIfIMqjPB9Y5aEd0gjcX1yecupfEBkpDmQrFlqT62yjYtzpkfdg09DqVVjKAaBrZm+2+Qcf+CnvAOpVp+2G1yubYrvaO9/xPudH3TLyY2AAAAAElFTkSuQmCC"/>
+	</defs>
+	<style>
+		tspan { white-space:pre } 
+		.t0 { font-size: 30px;fill: #ffffff;font-weight: 400;font-family: "DejaVuSans", "DejaVu Sans" } 
+	</style>
+	<use id="" href="#img1" x="1" y="1"/>
+	<text id="" style="transform: matrix(1,0,0,1,372,-34)" >
+	</text>
+	<text id="Prism" style="transform: matrix(1,0,0,1,56,28)" >
+		<tspan x="0" y="0" class="t0">P</tspan><tspan  y="0" class="t0">r</tspan><tspan  y="0" class="t0">i</tspan><tspan  y="0" class="t0">s</tspan><tspan  y="0" class="t0">m
+</tspan>
+	</text>
+</svg>

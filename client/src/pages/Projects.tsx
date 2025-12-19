@@ -27,8 +27,13 @@ const Projects = () => {
       </>
     )
   }
-  return (
+  return project ? (
     <div><h1>Projects</h1></div>
+  ) :
+  (
+    <div className='flex items-center justify-center h-screen'>
+         <p className='text-2xl font-medium text-gray-200'>Unable to load project!</p>
+    </div>
   )
 }
 

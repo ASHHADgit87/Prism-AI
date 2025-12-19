@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import type { Project } from '../types';
-import { Loader2Icon } from 'lucide-react';
+import { Loader2Icon, MessageSquareIcon, XIcon } from 'lucide-react';
 import { dummyConversations, dummyProjects } from '../assets/assets';
 
 const Projects = () => {
@@ -45,8 +45,8 @@ const Projects = () => {
             <p className='text-sm text-medium capitalize truncate'>{project.name}</p>
             <p className='text-xs text-gray-400 -mt-0.5'>Previewing Last Saved Version</p>
            </div>
-           <div>
-            
+           <div className='sm:hidden flex-1 flex justify-end'>
+              {isMenuOpen ? <MessageSquareIcon onClick={()=>setIsMenuOpen(false)} className='size-6 cursor-pointer'/> : <XIcon onClick={()=>setIsMenuOpen(true)} className='size-6 cursor-pointer'/>}
            </div>
         </div>
         {/*Middle*/}

@@ -36,7 +36,22 @@ const Projects = () => {
     )
   }
   return project ? (
-    <div><h1>Projects</h1></div>
+    <div className='flex flex-col h-screen w-full bg-gray-900 text-white'>
+      <div className='flex max-sm:flex-col sm:items-center gap-4 px-4 py-2 no-scrollbar'>
+        {/*Left*/}
+        <div className=''>
+
+        </div>
+        {/*Middle*/}
+        <div>
+
+        </div>
+        {/*Right*/}
+        <div>
+
+        </div>
+      </div>
+    </div>
   ) :
   (
     <div className='flex items-center justify-center h-screen'>

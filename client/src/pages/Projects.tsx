@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import type { Project } from '../types';
-import { LaptopIcon, Loader2Icon, MessageSquareIcon, SmartphoneIcon, TabletIcon, XIcon } from 'lucide-react';
+import { ArrowBigDownDashIcon, EyeIcon, EyeOffIcon, FullscreenIcon, LaptopIcon, Loader2Icon, MessageSquareIcon, SaveIcon, SmartphoneIcon, TabletIcon, XIcon } from 'lucide-react';
 import { dummyConversations, dummyProjects } from '../assets/assets';
 
 const Projects = () => {
@@ -56,9 +56,21 @@ const Projects = () => {
           <LaptopIcon onClick={()=> setDevice('desktop')} className={`size-6 p-1 rounded cursor-pointer ${device === 'desktop' ? 'bg-gray-700' : '' }`} />
         </div>
         {/*Right*/}
-        <div>
-
-        </div>
+        <div className='flex items-center justify-end gap-3 flex-1 text-xs sm:text-sm'>
+            <button>
+              <SaveIcon size={16}/>Save
+            </button>
+            <Link target='_blank' to={`/preview/${projectId}`}>
+             <FullscreenIcon size={16}/>Preview
+            </Link>
+            <button>
+              <ArrowBigDownDashIcon size={16}/>Download
+            </button>
+            <button>
+              {project.isPublished ? <EyeOffIcon size={16}/> : <EyeIcon size={16}/>}
+              {project.isPublished ? 'Unpublish' : 'Publish'}
+            </button>
+        </div> 
       </div>
     </div>
   ) :

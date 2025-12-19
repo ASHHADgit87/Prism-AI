@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import type { Project } from '../types';
 import { Loader2Icon } from 'lucide-react';
+import { dummyConversations, dummyProjects } from '../assets/assets';
 
 const Projects = () => {
   const {projectId} = useParams();
@@ -13,7 +14,14 @@ const Projects = () => {
   const [isMenuOpen,setIsMenuOpen] = useState(false);
   const [isSaving,setIsSaving] = useState(false);
   const fetchProject = async() =>{
-    
+     const project = dummyProjects.find(project => project.id === projectId )
+     setTimeout(() => {
+        if(project){
+          setProject({...project, conversation : dummyConversations});
+          setLoading(false)
+          setIsGenerating(project.current_code ? false : true)
+        }
+     },2000)
   }
   useEffect(() => {
     fetchProject();

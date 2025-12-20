@@ -47,8 +47,12 @@ const Sidebar = ({isMenuOpen,project,setProject,isGenerating,setIsGenerating} : 
                                         {new Date(ver.timestamp).toLocaleString()}
                                     </span>
                                 </div> 
-                                <div>
-                                    
+                                <div className='flex items-center justify-between'>
+                                    {project.current_version_index === ver.id ? (
+                                        <button className='px-3 py-1 rounded-md text-xs bg-gray-700'>Current Version</button>
+                                    ):(
+                                        <button className='px-3 py-1 rounded-md text-xs bg-indigo-500hover:bg-indigo-600 text-white'>Roll Back To This Version</button>
+                                    )}
                                 </div> 
                             </div>
                         )

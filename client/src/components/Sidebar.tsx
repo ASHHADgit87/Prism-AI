@@ -1,5 +1,5 @@
 import React from 'react'
-import type { Project } from '../types'
+import type { Message, Project } from '../types'
 interface SidebarProps {
     isMenuOpen : boolean,
     project : Project,
@@ -13,7 +13,19 @@ const Sidebar = ({isMenuOpen,project,setProject,isGenerating,setIsGenerating} : 
         <div className='flex flex-col h-full'>
             {/* Message Container*/}
             <div className='flex-1 overflow-y-auto no-scrollbar px-3 flex flex-col gap-4'>
-                {[]}
+                {[...project.conversation,...project.versions].sort((a,b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime()).map((message)=>{
+                    const isMessage = 'content' in message;
+
+                    if(isMessage){
+                        const msg = message as Message;
+                        const isUser = msg.role === 'user';
+                        return(
+                            <div>
+
+                            </div>
+                        )
+                    }
+                })}
             </div>
             {/* Input Area*/}
             <form>

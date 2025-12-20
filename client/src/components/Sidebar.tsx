@@ -1,6 +1,7 @@
 import React from 'react'
 import type { Message, Project, Version } from '../types'
-import { BotIcon, UserIcon } from 'lucide-react'
+import { BotIcon, EyeIcon, UserIcon } from 'lucide-react'
+import { Link } from 'react-router-dom'
 interface SidebarProps {
     isMenuOpen : boolean,
     project : Project,
@@ -53,11 +54,24 @@ const Sidebar = ({isMenuOpen,project,setProject,isGenerating,setIsGenerating} : 
                                     ):(
                                         <button className='px-3 py-1 rounded-md text-xs bg-indigo-500hover:bg-indigo-600 text-white'>Roll Back To This Version</button>
                                     )}
+                                    <Link target='_blank' to={`/preview/${project.id}/${ver.id}`}>
+                                    <EyeIcon className='size-6 p-1 bg-gray-700 hover:bg-indigo-500 transition-colors rounded'/>
+                                    </Link>
                                 </div> 
+
                             </div>
                         )
                     }
                 })}
+                {
+                    isGenerating && (
+                        <div className='flex items-start gap-3 justify-start'>
+                            <div className='w-8 h-8 rounded-full bg-linear-to-br from-indigo-600 to-indigo-700 flex items-center justify-center '>
+                                <BotIcon className='size-5 text-white'/>
+                            </div> 
+                        </div>
+                    )
+                }
             </div>
             {/* Input Area*/}
             <form>

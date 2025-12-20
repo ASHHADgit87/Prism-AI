@@ -1,5 +1,6 @@
 import React from 'react'
 import type { Message, Project } from '../types'
+import { BotIcon } from 'lucide-react'
 interface SidebarProps {
     isMenuOpen : boolean,
     project : Project,
@@ -22,10 +23,13 @@ const Sidebar = ({isMenuOpen,project,setProject,isGenerating,setIsGenerating} : 
                         return(
                             <div key={msg.id} className={`flex items-start gap-3 ${isUser ? 'justify-end' : 'justify-start'}`}>
                               {!isUser && (
-                                <div>
-                                    
+                                <div className='w-8 h-8 rounded-full bg-linear-to-br from-indigo-600 to-indigo-700 flex items-center justify-center '>
+                                    <BotIcon className='size-5 text-1hite'/>
                                 </div>
                               )}
+                              <div className={`max-w-[80%] p-2 px-4 rounded-2xl shadow-sm text-sm mt-5 leading-relaxed ${isUser ? 'bg-linear-to-r from-indigo-500 to-indigo-600 text-white rounded-tr-none': 'text-gray-800 rouned-tl-none bg-gray-800 text-gray-100'}`}>
+                                {msg.content}
+                              </div>
                             </div>
                         )
                     }

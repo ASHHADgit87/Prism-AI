@@ -1,5 +1,5 @@
 import React from 'react'
-import type { Message, Project } from '../types'
+import type { Message, Project, Version } from '../types'
 import { BotIcon, UserIcon } from 'lucide-react'
 interface SidebarProps {
     isMenuOpen : boolean,
@@ -38,7 +38,21 @@ const Sidebar = ({isMenuOpen,project,setProject,isGenerating,setIsGenerating} : 
                             </div>
                         )
                     }
-                    
+                    else{
+                        const ver = message as Version;
+                        return(
+                            <div key={ver.id} className='w-4/5 mx-auto my-2 p-3 rounded-xl bg-gray-800 text-gray-100 shadow flex flex-col gap-2'>
+                                <div className='text-xs font-medium'>
+                                    Code Updated <br/> <span className='text-gray-500 text-xs font-normal'>
+                                        {new Date(ver.timestamp).toLocaleString()}
+                                    </span>
+                                </div> 
+                                <div>
+                                    
+                                </div> 
+                            </div>
+                        )
+                    }
                 })}
             </div>
             {/* Input Area*/}

@@ -20,8 +20,12 @@ const Sidebar = ({isMenuOpen,project,setProject,isGenerating,setIsGenerating} : 
                         const msg = message as Message;
                         const isUser = msg.role === 'user';
                         return(
-                            <div>
-
+                            <div key={msg.id} className={`flex items-start gap-3 ${isUser ? 'justify-end' : 'justify-start'}`}>
+                              {!isUser && (
+                                <div>
+                                    
+                                </div>
+                              )}
                             </div>
                         )
                     }

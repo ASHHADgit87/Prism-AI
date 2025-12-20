@@ -11,6 +11,9 @@ interface SidebarProps {
 }
 const Sidebar = ({isMenuOpen,project,setProject,isGenerating,setIsGenerating} : SidebarProps) => {
     const messageRef = useRef<HTMLDivElement>(null)
+    const handleRollBack = async (versionId: string) => {
+        
+    }
     useEffect(() => {
         if(messageRef.current){
             messageRef.current.scrollIntoView({behavior: 'smooth'})
@@ -59,7 +62,7 @@ const Sidebar = ({isMenuOpen,project,setProject,isGenerating,setIsGenerating} : 
                                     {project.current_version_index === ver.id ? (
                                         <button className='px-3 py-1 rounded-md text-xs bg-gray-700'>Current Version</button>
                                     ):(
-                                        <button className='px-3 py-1 rounded-md text-xs bg-indigo-500hover:bg-indigo-600 text-white'>Roll Back To This Version</button>
+                                        <button onClick={()=> handleRollBack(ver.id)} className='px-3 py-1 rounded-md text-xs bg-indigo-500hover:bg-indigo-600 text-white'>Roll Back To This Version</button>
                                     )}
                                     <Link target='_blank' to={`/preview/${project.id}/${ver.id}`}>
                                     <EyeIcon className='size-6 p-1 bg-gray-700 hover:bg-indigo-500 transition-colors rounded'/>

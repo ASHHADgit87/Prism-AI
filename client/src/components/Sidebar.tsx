@@ -9,8 +9,9 @@ interface SidebarProps {
 }
 const Sidebar = ({isMenuOpen,project,setProject,isGenerating,setIsGenerating} : SidebarProps) => {
   return (
-    <div className=''>
-
+    <div className = {`h-full sm:max-w-sm rounded-xl bg-gray-900 border-gray-800 transition-all ${isMenuOpen ? 'max-sm:w-0 overflow-hidden' : 'w-full'}`}>
+        <div className='flex flex-col h-full'>
+        </div>   
     </div>
   )
 }

@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import type { Project } from '../types';
 import { ArrowBigDownDashIcon, EyeIcon, EyeOffIcon, FullscreenIcon, LaptopIcon, Loader2Icon, MessageSquareIcon, SaveIcon, SmartphoneIcon, TabletIcon, XIcon } from 'lucide-react';
-import { dummyConversations, dummyProjects } from '../assets/assets';
+import { dummyConversations, dummyProjects, dummyVersion } from '../assets/assets';
+import Sidebar from '../components/Sidebar';
 
 const Projects = () => {
   const {projectId} = useParams();
@@ -17,7 +18,7 @@ const Projects = () => {
      const project = dummyProjects.find(project => project.id === projectId )
      setTimeout(() => {
         if(project){
-          setProject({...project, conversation : dummyConversations});
+          setProject({...project, conversation : dummyConversations ,versions: dummyVersion});
           setLoading(false)
           setIsGenerating(project.current_code ? false : true)
         }
@@ -48,7 +49,7 @@ const Projects = () => {
     <div className='flex flex-col h-screen w-full bg-gray-900 text-white'>
       <div className='flex max-sm:flex-col sm:items-center gap-4 px-4 py-2 no-scrollbar'>
         {/*Left*/}
-        <div className='flex items-center gap-2 sm:min-w-90 text-nowrap'>
+        <div className='flex items-center gap-2 sm:min-w-[90px] text-nowrap'>
            <img src='/favicon.svg' alt='logo' className='h-6 cursor-pointer ' onClick={()=>navigate('/')}/>
            <div>
             <p className='text-sm text-medium capitalize truncate'>{project.name}</p>
@@ -82,7 +83,7 @@ const Projects = () => {
         </div> 
       </div>
       <div className='flex-1 flex overflow-auto'>
-            <div>Sidebar</div>
+            <Sidebar isMenuOpen={isMenuOpen} project={project} setProject={(p) => setProject(p)} isGenerating={isGenerating} setIsGenerating={setIsGenerating}/>
             <div className='flex-1 p-2 pl-0'>Project Preview</div>
       </div>
     </div>

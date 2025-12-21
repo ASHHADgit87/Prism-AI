@@ -8,7 +8,7 @@ const Navbar = () => {
 
     return (
         <>
-        <nav className="sticky top-0 z-50 flex items-center justify-between w-full py-4 px-4 md:px-16 lg:px-24 xl:px-32 backdrop-blur border-b text-white border-[#00331a] sticky">
+        <nav className="sticky top-0 z-50 flex items-center justify-between w-full py-4 px-4 md:px-16 lg:px-24 xl:px-32 backdrop-blur border-b text-white border-[#00331a]">
             <Link to='/'>
                 <img src={assets.logo} alt='' className='h-5 sm:h-7'/>
             </Link>

@@ -1,6 +1,6 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import type { Message, Project, Version } from '../types'
-import { BotIcon, EyeIcon, UserIcon } from 'lucide-react'
+import { BotIcon, EyeIcon, Loader2Icon, SendIcon, UserIcon } from 'lucide-react'
 import { Link } from 'react-router-dom'
 interface SidebarProps {
     isMenuOpen : boolean,
@@ -11,6 +11,7 @@ interface SidebarProps {
 }
 const Sidebar = ({isMenuOpen,project,setProject,isGenerating,setIsGenerating} : SidebarProps) => {
     const messageRef = useRef<HTMLDivElement>(null)
+    const [input,setInput] = useState('');
     const handleRollBack = async (versionId: string) => {
         
     }
@@ -35,10 +36,10 @@ const Sidebar = ({isMenuOpen,project,setProject,isGenerating,setIsGenerating} : 
                             <div key={msg.id} className={`flex items-start gap-3 ${isUser ? 'justify-end' : 'justify-start'}`}>
                               {!isUser && (
                                 <div className='w-8 h-8 rounded-full bg-linear-to-br from-indigo-600 to-indigo-700 flex items-center justify-center '>
-                                    <BotIcon className='size-5 text-1hite'/>
+                                    <BotIcon className='size-5 text-white'/>
                                 </div>
                               )}
-                              <div className={`max-w-[80%] p-2 px-4 rounded-2xl shadow-sm text-sm mt-5 leading-relaxed ${isUser ? 'bg-linear-to-r from-indigo-500 to-indigo-600 text-white rounded-tr-none': 'rouned-tl-none bg-gray-800 text-gray-100'}`}>
+                              <div className={`max-w-[80%] p-2 px-4 rounded-2xl shadow-sm text-sm mt-5 leading-relaxed ${isUser ? 'bg-linear-to-r from-indigo-500 to-indigo-600 text-white rounded-tr-none': 'rounded-tl-none bg-gray-800 text-gray-100'}`}>
                                 {msg.content}
                               </div>
                               {isUser && (
@@ -62,7 +63,7 @@ const Sidebar = ({isMenuOpen,project,setProject,isGenerating,setIsGenerating} : 
                                     {project.current_version_index === ver.id ? (
                                         <button className='px-3 py-1 rounded-md text-xs bg-gray-700'>Current Version</button>
                                     ):(
-                                        <button onClick={()=> handleRollBack(ver.id)} className='px-3 py-1 rounded-md text-xs bg-indigo-500hover:bg-indigo-600 text-white'>Roll Back To This Version</button>
+                                        <button onClick={()=> handleRollBack(ver.id)} className='px-3 py-1 rounded-md text-xs bg-indigo-500 hover:bg-indigo-600 text-white'>Roll Back To This Version</button>
                                     )}
                                     <Link target='_blank' to={`/preview/${project.id}/${ver.id}`}>
                                     <EyeIcon className='size-6 p-1 bg-gray-700 hover:bg-indigo-500 transition-colors rounded'/>
@@ -92,7 +93,13 @@ const Sidebar = ({isMenuOpen,project,setProject,isGenerating,setIsGenerating} : 
             {/* Input Area*/}
             <form className='m-3 relative'>
                  <div className='flex items-center gap-2'>
-                        <textarea rows={4} placeholder='Describe Your Website or Request changes...' className='flex-1 p-3 rounded-xl resize-none text-sm outline-none ring ring-gray-700 focus:ring-indigo-500 bg-gray-800 text-gray-100 placeholder-gray-400 transition-all' disabled={isGenerating}/>
+                        <textarea onChange={(e) => setInput(e.target.value)} value={input} rows={4} placeholder='Describe Your Website or Request changes...' className='flex-1 p-3 rounded-xl resize-none text-sm outline-none ring ring-gray-700 focus:ring-indigo-500 bg-gray-800 text-gray-100 placeholder-gray-400 transition-all' disabled={isGenerating}/>
+                            <button>
+                                {isGenerating ? <Loader2Icon className='size-7 p-1.5 animate-spin text-white'/>
+                                :
+                                <SendIcon className='size-7 p-1.5 text-white'/>
+                                }
+                            </button>
                  </div>
             </form>
         </div>   

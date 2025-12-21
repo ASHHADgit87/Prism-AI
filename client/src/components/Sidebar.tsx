@@ -90,8 +90,10 @@ const Sidebar = ({isMenuOpen,project,setProject,isGenerating,setIsGenerating} : 
                 <div ref={messageRef}/>
             </div>
             {/* Input Area*/}
-            <form>
-
+            <form className='m-3 relative'>
+                 <div className='flex items-center gap-2'>
+                        <textarea rows={4} placeholder='Describe Your Website or Request changes...' className='flex-1 p-3 rounded-xl resize-none text-sm outline-none ring ring-gray-700 focus:ring-indigo-500 bg-gray-800 text-gray-100 placeholder-gray-400 transition-all' disabled={isGenerating}/>
+                 </div>
             </form>
         </div>   
     </div>

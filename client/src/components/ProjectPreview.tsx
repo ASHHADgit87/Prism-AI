@@ -32,7 +32,7 @@ const ProjectPreview = forwardRef<ProjectPreviewRef, ProjectPreviewProps>(({proj
     <div className='relative h-full bg-gray-900 flex-1 rounded-xl overflow-hidden max-sm:ml-2'>
         {project.current_code?(
             <>
-                    <iframe ref={iframeRef}  srcDoc={injectPreview(project.current_code)}className={`h-full max-sm:w-full ${resolutions[device]} max-auto transition-all`} />
+                    <iframe ref={iframeRef}  srcDoc={injectPreview(project.current_code)}className={`h-full max-sm:w-full ${resolutions[device]} mx-auto transition-all`} />
             </>
         )
         :

@@ -88,15 +88,21 @@ const EditorPanel = ({selectedElement,onUpdate,onClose}: EditorPanelProps) => {
                     BackGround
                     </label>
                     <div className='flex items-center gap-2 border border-gray-400 rounded-md p-1'>
-                        <input type='text' value={values.styles.backgroundColor === 'rgba(0, 0, 0, 0)' ? '#ffffff' : values.styles.backgroundColor} onChange={(e) => handleStyleChange('backgroundColor',e.target.value)} className='w-6 h-6 cursor-pointer '/>
+                        <input type='color' value={values.styles.backgroundColor === 'rgba(0, 0, 0, 0)' ? '#ffffff' : values.styles.backgroundColor} onChange={(e) => handleStyleChange('backgroundColor',e.target.value)} className='w-6 h-6 cursor-pointer '/>
+                        <span className='text-xs text-gray-600 truncate'>
+                            {values.styles.backgroundColor}
+                        </span>
                     </div>
                  </div>
                  <div>
                     <label className='block text-xs font-medium text-gray-500 mb-1'>
-                    BackGround
+                    Text Color
                     </label>
                     <div className='flex items-center gap-2 border border-gray-400 rounded-md p-1'>
-                        <input type='text' value={values.styles.backgroundColor === 'rgba(0, 0, 0, 0)' ? '#ffffff' : values.styles.backgroundColor} onChange={(e) => handleStyleChange('backgroundColor',e.target.value)} className='w-6 h-6 cursor-pointer '/>
+                        <input type='color' value={values.styles.color } onChange={(e) => handleStyleChange('color',e.target.value)} className='w-6 h-6 cursor-pointer '/>
+                        <span className='text-xs text-gray-600 truncate'>
+                            {values.styles.color}
+                        </span>
                     </div>
                  </div>
             </div>

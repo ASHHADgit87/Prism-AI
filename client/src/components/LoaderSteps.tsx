@@ -1,10 +1,10 @@
-import { ScanLineIcon, SquareIcon } from 'lucide-react'
+import { CircleIcon, ScanLineIcon, SquareIcon, TriangleIcon } from 'lucide-react'
 import React from 'react'
 const steps = [
-    {icon : ScanLineIcon , label: "Analyzing Your Request....."},
-    {icon : SquareIcon , label: "Generating Layout Structure....."},
-    {icon : ScanLineIcon , label: "Assembling UI Components....."},
-    {icon : ScanLineIcon , label: "Finalizing Your Website....."}
+    { icon: ScanLineIcon, label: "Reviewing your input..." },
+  { icon: SquareIcon, label: "Building the page framework..." },
+  { icon: TriangleIcon, label: "Putting interface elements together..." },
+  { icon: CircleIcon, label: "Wrapping up the final output..." }
 ]
 const STEP_DURATION = 45000
 const LoaderSteps = () => {
@@ -18,6 +18,7 @@ const LoaderSteps = () => {
        </div>
       {/* Step label - fade using transition only (no invisible start)*/}
       <p className='mt-8 text-lg font-light text-white/90 tracking-wide transition-all duration-700 ease-in-out opacity-100' key={current}>{steps[current].label}</p>
+      <p className='text-xs text-gray-400 mt-2 transition-opacity duration-700 opacity-100'>This process usually takes about 2-3 minutes.</p>
     </div>
   )
 }

@@ -87,7 +87,17 @@ const EditorPanel = ({selectedElement,onUpdate,onClose}: EditorPanelProps) => {
                     <label className='block text-xs font-medium text-gray-500 mb-1'>
                     BackGround
                     </label>
-                    <input type='text' value={values.styles.backgroundColor === 'rgba(0, 0, 0, 0)' ? '#ffffff' : values.styles.backgroundColor} onChange={(e) => handleStyleChange('backgroundColor',e.target.value)} className='w-6 h-6 cursor-pointer '/>
+                    <div className='flex items-center gap-2 border border-gray-400 rounded-md p-1'>
+                        <input type='text' value={values.styles.backgroundColor === 'rgba(0, 0, 0, 0)' ? '#ffffff' : values.styles.backgroundColor} onChange={(e) => handleStyleChange('backgroundColor',e.target.value)} className='w-6 h-6 cursor-pointer '/>
+                    </div>
+                 </div>
+                 <div>
+                    <label className='block text-xs font-medium text-gray-500 mb-1'>
+                    BackGround
+                    </label>
+                    <div className='flex items-center gap-2 border border-gray-400 rounded-md p-1'>
+                        <input type='text' value={values.styles.backgroundColor === 'rgba(0, 0, 0, 0)' ? '#ffffff' : values.styles.backgroundColor} onChange={(e) => handleStyleChange('backgroundColor',e.target.value)} className='w-6 h-6 cursor-pointer '/>
+                    </div>
                  </div>
             </div>
          </div>

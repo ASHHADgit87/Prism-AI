@@ -75,7 +75,20 @@ const EditorPanel = ({selectedElement,onUpdate,onClose}: EditorPanelProps) => {
                  </div>
             </div>
             <div className='grid grid-cols-2 gap-3'>
-
+               <div>
+                    <label className='block text-xs font-medium text-gray-500 mb-1'>
+                    FontSize
+                </label>
+                <input type='text' value={values.styles.fontSize} onChange={(e) => handleStyleChange('fontSize',e.target.value)} className='w-full text-sm p-2 border border-gray-400 rounded-md focus:ring-2 focus:ring-indigo-500 outline-none '/>
+                 </div>
+            </div>
+            <div className='grid grid-cols-2 gap-3'>
+               <div>
+                    <label className='block text-xs font-medium text-gray-500 mb-1'>
+                    BackGround
+                    </label>
+                    <input type='text' value={values.styles.backgroundColor === 'rgba(0, 0, 0, 0)' ? '#ffffff' : values.styles.backgroundColor} onChange={(e) => handleStyleChange('backgroundColor',e.target.value)} className='w-6 h-6 cursor-pointer '/>
+                 </div>
             </div>
          </div>
     </div>

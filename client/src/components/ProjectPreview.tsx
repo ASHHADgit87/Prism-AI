@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useRef, useState } from 'react'
+import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react'
 import type { Project } from '../types'
 import { iframeScript } from '../assets/assets';
 import { Edit } from 'lucide-react';
@@ -41,6 +41,13 @@ const ProjectPreview = forwardRef<ProjectPreviewRef, ProjectPreviewProps>(({proj
         tablet : 'w-[768px]',
         desktop : 'w-full'
     }
+    useImperativeHandle(ref, () => ({
+        getCode: () => {
+            const doc = iframeRef.current?.contentDocument;
+        if(!doc)
+        return undefined;
+        }
+    }))
     const injectPreview = (html: string) => {
         if(!html) return '';
         if(!showEditorPanel) return html;

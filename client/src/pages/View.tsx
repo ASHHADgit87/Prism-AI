@@ -25,7 +25,7 @@ const View = () => {
     return(<div className='flex items-center justify-center h-screen'><Loader2Icon className='size-7 animate-spin text-indigo-200'/></div>)
   }
   return (
-    <div>
+    <div className='h-screen'>
       {code && <ProjectPreview project={{current_code:code} as Project}isGenerating={false} showEditorPanel={false}/> }
     </div>
   )

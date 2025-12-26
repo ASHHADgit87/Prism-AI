@@ -6,3 +6,4 @@ export const authClient = createAuthClient({
         credentials: 'include'
     }
 })
+export const { signIn, signUp, useSession } = authClient;

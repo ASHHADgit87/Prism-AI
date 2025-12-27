@@ -17,6 +17,7 @@ const App = () => {
   || pathname.startsWith('/preview/')
   return (
     <div>
+      <Toaster/>
       {!hideNavbar && <Navbar/>}
       <Routes>
         <Route path='/' element={<Home/>} />

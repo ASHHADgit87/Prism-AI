@@ -1,11 +1,13 @@
 import React from 'react'
 import { assets } from '../assets/assets';
 import { Link, useNavigate } from 'react-router-dom';
+import { authClient } from '@/lib/auth-client';
+import {UserButton} from '@daveyplate/better-auth-ui'
 
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = React.useState(false);
     const navigate = useNavigate();
-
+    const {data: session} = authClient.useSession();
     return (
         <>
         <nav className="sticky top-0 z-50 flex items-center justify-between w-full py-4 px-4 md:px-16 lg:px-24 xl:px-32 backdrop-blur border-b text-white border-[#00331a]">
@@ -21,12 +23,18 @@ const Navbar = () => {
             </div>
 
             <div className="flex items-center gap-3">
-                <button 
+                {!session?.user ? (
+                     <button 
                     onClick={() => navigate('/auth/signin')} 
                     className="border-3 border-[#004d1a] px-6 py-1.5 max-sm:text-sm bg-gradient-to-r from-[#004d1a] via-[#00FFAB] to-[#0073b3] hover:brightness-110 active:scale-95 transition rounded text-white font-medium"
                 >
                     Get started
                 </button>
+                ) :(
+                   <UserButton size='icon'/>
+                )
+                    
+                }
 
                 <button id="open-menu" className="md:hidden active:scale-90 transition" onClick={() => setMenuOpen(true)}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

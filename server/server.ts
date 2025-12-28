@@ -9,7 +9,7 @@ const port = 3000;
 
 const corsOptions = {
     origin: process.env.TRUSTED_ORIGINS?.split(',') || [],
-    Credentials: true,
+    credentials: true,
 }
 app.use(cors(corsOptions));
 app.all('/api/auth/{*any}', toNodeHandler(auth));

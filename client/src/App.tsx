@@ -9,6 +9,7 @@ import Projects from './pages/Projects'
 import Preview from './pages/Preview'
 import MyProjects from './pages/MyProjects'
 import Navbar from './components/Navbar'
+import AuthPage from './pages/auth/AuthPage'
 
 const App = () => {
   const {pathname} = useLocation();
@@ -28,6 +29,7 @@ const App = () => {
         <Route path='/preview/:projectId' element={<Preview/>} />
         <Route path='/preview/:projectId/:versionId' element={<Preview/>} />
         <Route path='/projects' element={<MyProjects/>} />
+         <Route path="/auth/:pathname" element={<AuthPage/>} />
       </Routes>
     </div>
   )

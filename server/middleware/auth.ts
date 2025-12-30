@@ -11,7 +11,8 @@ export const protect = async(req:Request, res:Response, next:NextFunction) =>{
     }
     req.userId = session.user.id;
     next(); 
-   } catch (error) {
-     
+   } catch (error: any) {
+     console.log(error);
+     res.status(401).json({message: error.code || error.message});
    }
 }

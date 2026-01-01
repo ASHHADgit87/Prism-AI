@@ -13,6 +13,6 @@ export const getUserCredits = async (req:Request, res:Response) => {
         res.json({credits: user?.credits});
     } catch (error: any) {
         console.log(error);
-        res.status(401).json({message: error.code || error.message});
+        res.status(500).json({message: error.code || error.message});
     }
 }

@@ -28,8 +28,21 @@ export const createUserProject = async (req:Request, res:Response) => {
             
         })
         if(user && user.credits < 5){
-            
+            return res.status(403).json({message:"Not enough credits"});
         }
+        const project = await prisma.websiteProject.create({
+            data: {
+                name: "New Project",
+                initial_prompt,
+                userId: userId
+            }
+        })
+        await prisma.user.update({
+            where:{id: userId},
+            data: {
+                credits: user?.credits - 5
+            }
+        })
         res.json({credits: user?.credits});
     } catch (error: any) {
         console.log(error);

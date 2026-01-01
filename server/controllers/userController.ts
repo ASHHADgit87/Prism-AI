@@ -32,9 +32,9 @@ export const createUserProject = async (req:Request, res:Response) => {
         }
         const project = await prisma.websiteProject.create({
             data: {
-                name: "New Project",
+                name: initial_prompt,
                 initial_prompt,
-                userId: userId
+                userId
             }
         })
         await prisma.user.update({

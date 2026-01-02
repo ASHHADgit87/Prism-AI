@@ -1,5 +1,6 @@
 import {Request,Response} from "express";
 import prisma from "../lib/prisma.js";
+import openai from "../configs/openai.js";
 export const getUserCredits = async (req:Request, res:Response) => {
     try {
         const userId = req.userId;
@@ -57,7 +58,39 @@ export const createUserProject = async (req:Request, res:Response) => {
             }
         })
         res.json({projectId: project.id});
-        const 
+        const promptEnhanceResponse = await openai.chat.completions.create({
+            model: 'z-ai/glm-4.5-air:free',
+            messages: [
+                {
+                    role: 'system',
+                    content: `You are a prompt enhancement specialist. Take the user's website request and expand it into a detailed, comprehensive prompt that will help create the best possible website.
+
+    Enhance this prompt by:
+    1. Adding specific design details (layout, color scheme, typography)
+    2. Specifying key sections and features
+    3. Describing the user experience and interactions
+    4. Including modern web design best practices
+    5. Mentioning responsive design requirements
+    6. Adding any missing but important elements
+
+Return ONLY the enhanced prompt, nothing else. Make it detailed but concise (2-3 paragraphs max).
+
+`
+                },
+                {
+                    role: 'user',
+                    content: initial_prompt
+                }
+            ]
+        })
+        const enhancedPrompt = promptEnhanceResponse.choices[0].message.content;
+        await prisma.conversation.create({
+            data: {
+                role: "assistant",
+                content: ``,
+                projectId: project.id,
+            }
+        })
     } catch (error: any) {
         console.log(error);
         res.status(500).json({message: error.code || error.message});

@@ -153,8 +153,23 @@ Return ONLY the enhanced prompt, nothing else. Make it detailed but concise (2-3
                 projectId: project.id,
             }
         })
+        await prisma.websiteProject.update({
+            where:{id: project.id},
+            data: {
+                current_code: code.replace(/```[a-z]*\n?/gi, '').replace(/```$/g, '').trim(),
+                current_version_index: version.id,
+            }
+        })
     } catch (error: any) {
+        await prisma.user.update({
+            where:{id: userId},
+            data: {
+                credits: {
+                    increment: 5
+                }
+            }
+        })
         console.log(error);
-        res.status(500).json({message: error.code || error.message});
+        res.status(500).json({message:  error.message});
     }
 }

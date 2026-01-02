@@ -130,8 +130,28 @@ Return ONLY the enhanced prompt, nothing else. Make it detailed but concise (2-3
 
     The HTML should be complete and ready to render as-is with Tailwind CSS.
 `
+                },
+                {
+                    role: 'user',
+                    content: enhancedPrompt || ''
                 }
             ]
+        })
+        const code = codeGenerateionResponse.choices[0].message.content || '';
+        const version = await prisma.version.create({
+            data: {
+                code: code.replace(/```[a-z]*\n?/gi, '').replace(/```$/g, '').trim(),
+                description: 'Initial Version',
+                projectId: project.id
+                
+            }
+        })
+        await prisma.conversation.create({
+            data: {
+                role: "assistant",
+                content: 'Website Generated Successfully. Now You Can Preview Your Website and request changes',
+                projectId: project.id,
+            }
         })
     } catch (error: any) {
         console.log(error);

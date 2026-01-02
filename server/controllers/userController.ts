@@ -204,3 +204,27 @@ export const getUserProject = async (req:Request, res:Response) => {
         res.status(500).json({message: error.code || error.message});
     }
 }
+
+export const getUserProjects = async (req:Request, res:Response) => {
+    try {
+        const userId = req.userId;
+        if(!userId){
+            return res.status(401).json({message:"Unauthorized User"});  
+        }
+        
+        const projects = await prisma.websiteProject.findMany({
+            where:{userId},
+            orderBy: {
+                updatedAt: 'desc'
+            }
+        })
+        
+        
+        
+        res.json({projects});
+    } catch (error: any) {
+        console.log(error);
+        res.status(500).json({message: error.code || error.message});
+    }
+}
+

@@ -57,6 +57,7 @@ export const createUserProject = async (req:Request, res:Response) => {
             }
         })
         res.json({projectId: project.id});
+        const 
     } catch (error: any) {
         console.log(error);
         res.status(500).json({message: error.code || error.message});

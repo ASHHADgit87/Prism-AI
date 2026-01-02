@@ -87,7 +87,7 @@ Return ONLY the enhanced prompt, nothing else. Make it detailed but concise (2-3
         await prisma.conversation.create({
             data: {
                 role: "assistant",
-                content: ``,
+                content: `I've enhanced your prompt to: ${enhancedPrompt}`,
                 projectId: project.id,
             }
         })

@@ -242,7 +242,17 @@ export const togglePublish= async (req:Request, res:Response) => {
             where:{id: projectId, userId},
             
         })
-        res.json({projects});
+        if(!project){
+            return res.status(404).json({message:"Project Not Found"});
+        }
+        await prisma.websiteProject.update({
+            where:{id: project.id},
+            data: {
+                isPublished: !project.isPublished
+            }
+        })
+        
+        res.json({message: project.isPublished ? "Project Unpublished Successfully" : "Project Published Successfully"});
     } catch (error: any) {
         console.log(error);
         res.status(500).json({message: error.code || error.message});

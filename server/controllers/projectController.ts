@@ -102,9 +102,41 @@ Return ONLY the enhanced request, nothing else. Keep it concise (1-2 sentences).
                 }
             ]
         })
-        res.json({credits: user?.credits});
+        const code = codeGenerationResponse.choices[0].message?.content || '';
+
+        const version = await prisma.version.create({
+            data: {
+                code: code.replace(/```[a-z]*\n?/gi, '').replace(/```$/g, '').trim(),
+                description: 'Chnages Made',
+                projectId
+            }
+
+        })
+        await prisma.conversation.create({
+            data: {
+                role: "assistant",
+                content: "I've made the changes to your website! You can now preview it",
+                projectId
+            }
+        })
+        await prisma.websiteProject.update({
+              where:{id: projectId},
+              data: {
+                  current_code: code.replace(/```[a-z]*\n?/gi, '').replace(/```$/g, '').trim(),
+                  current_version_index: version.id
+              }
+        })
+
+        res.json({message: "Changes Made Successfully"});
     } catch (error: any) {
+        await prisma.user.update({
+            where:{id: userId},
+            data: {
+                credits: { increment: 5 }
+            }
+        })
         console.log(error);
         res.status(500).json({message: error.code || error.message});
     }
 }
+

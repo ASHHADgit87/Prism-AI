@@ -100,7 +100,7 @@ Return ONLY the enhanced prompt, nothing else. Make it detailed but concise (2-3
                 projectId: project.id,
             }
         })
-        const codeGenerateionResponse = await openai.chat.completions.create({
+        const codeGenerationResponse = await openai.chat.completions.create({
             model: 'z-ai/glm-4.5-air:free',
             messages: [
                 {
@@ -137,7 +137,7 @@ Return ONLY the enhanced prompt, nothing else. Make it detailed but concise (2-3
                 }
             ]
         })
-        const code = codeGenerateionResponse.choices[0].message.content || '';
+        const code = codeGenerationResponse.choices[0].message.content || '';
         const version = await prisma.version.create({
             data: {
                 code: code.replace(/```[a-z]*\n?/gi, '').replace(/```$/g, '').trim(),

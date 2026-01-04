@@ -157,8 +157,28 @@ export const rollbackToVersion = async(req:Request, res:Response) =>{
         }
         const version = await project.versions.find((version) => version.id === versionId);
         
+        if(!version){
+            return res.status(404).json({message:"Version Not Found"});
+        }
+        await prisma.websiteProject.update({
+            where:{id: projectId, userId},
+            data: {
+                current_code: version.code,
+                current_version_index: version.id
+            }
+        }) 
+        await prisma.conversation.create({
+            data: {
+                role: "assistant",
+                content: "I've rolled back to the previous version of your website! You can now preview it",
+                projectId
+            }
+        })
+        res.json({message: "Version Rolled Back"});
         
-    } catch (error) {
+    } catch (error: any) {
+        console.log(error);
+        res.status(500).json({message: error.code || error.message});
         
     }
 }

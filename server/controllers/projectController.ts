@@ -139,4 +139,26 @@ Return ONLY the enhanced request, nothing else. Keep it concise (1-2 sentences).
         res.status(500).json({message: error.code || error.message});
     }
 }
-
+export const rollbackToVersion = async(req:Request, res:Response) =>{
+    try {
+        const userId = req.userId;
+        if(!userId){
+            return res.status(401).json({message:"Unauthorized User"});  
+        }
+        const {projectId, versionId} = req.params;
+        const project = await prisma.websiteProject.findUnique({
+            where:{id: projectId, userId},
+            include: {
+                versions: true
+            }
+        })
+        if(!project){
+            return res.status(404).json({message:"Project Not Found"});
+        }
+        const version = await project.versions.find((version) => version.id === versionId);
+        
+        
+    } catch (error) {
+        
+    }
+}

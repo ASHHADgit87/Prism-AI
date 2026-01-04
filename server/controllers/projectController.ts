@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import prisma from "../lib/prisma.js";
+import openai from "../configs/openai.js";
 
 export const makeRevisions = async (req:Request, res:Response) => {
     const userId = req.userId;
@@ -42,7 +43,27 @@ export const makeRevisions = async (req:Request, res:Response) => {
                 credits: { decrement: 5 }
             }
         })
-        
+        const promptEnhanceResponse = await openai.chat.completions.create({
+            model: 'z-ai/glm-4.5-air:free',
+            messages: [
+                {
+                    role: 'system',
+                    content: `You are a prompt enhancement specialist. The user wants to make changes to their website. Enhance their request to be more specific and actionable for a web developer.
+
+    Enhance this by:
+    1. Being specific about what elements to change
+    2. Mentioning design details (colors, spacing, sizes)
+    3. Clarifying the desired outcome
+    4. Using clear technical terms
+
+Return ONLY the enhanced request, nothing else. Keep it concise (1-2 sentences).
+`
+                },{
+                    role: 'user',
+                    content: `User's Request: "${message}"`
+                }
+            ]
+        })
         res.json({credits: user?.credits});
     } catch (error: any) {
         console.log(error);

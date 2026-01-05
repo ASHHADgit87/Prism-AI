@@ -201,3 +201,31 @@ export const deleteproject = async(req:Request, res:Response) =>{
         
     }
 }
+
+export const getProjectPreview = async(req:Request, res:Response) =>{
+    try {
+        const userId = req.userId;
+        const {projectId} = req.params;
+        
+        if(!userId){
+            return res.status(401).json({message:"Unauthorized User"});  
+        }
+        const project = await prisma.websiteProject.findFirst({
+            where:{id: projectId, userId},
+            include: {
+                versions: true
+            }
+        })
+        if(!project){
+            return res.status(404).json({message:"Project Not Found"});
+        }
+        
+        
+        res.json({project});
+        
+    } catch (error: any) {
+        console.log(error);
+        res.status(500).json({message: error.code || error.message});
+        
+    }
+}

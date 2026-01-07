@@ -64,12 +64,19 @@ const Home = () => {
             className="bg-[#004d1a]/40 max-w-2xl w-full rounded-xl p-4 mt-10 border border-[#00FFAB] focus-within:ring-2 ring-[#00FFAB] transition-all"
           >
             <textarea 
-              onChange={e => setInput(e.target.value)} 
-              className="bg-transparent outline-none text-gray-200 resize-none w-full" 
-              rows={4} 
-              placeholder="Describe your website in details" 
-              required 
-            />
+  onChange={e => setInput(e.target.value)} 
+  onKeyDown={(e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      e.currentTarget.form?.requestSubmit();
+    }
+  }}
+  className="bg-transparent outline-none text-gray-200 resize-none w-full" 
+  rows={4} 
+  placeholder="Describe your website in details" 
+  required 
+/>
+
             <button 
               className="border-2 border-[#004d1a] ml-auto flex items-center gap-2 bg-gradient-to-r from-[#004d1a] via-[#00FFAB] to-[#0073b3] rounded-md px-4 py-2 text-white font-medium hover:brightness-110 transition"
             >

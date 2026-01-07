@@ -1,16 +1,36 @@
 import { Loader2Icon } from 'lucide-react';
 import React, { useState } from 'react'
 import Footer from '../components/Footer';
+import { authClient } from '@/lib/auth-client';
+import { toast } from 'sonner';
+import api from '@/configs/axios';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
+  const navigate = useNavigate();
+  const {data: session} = authClient.useSession();
     const [input, setInput] = React.useState('');
     const [loading ,setLoading ] = useState(false)
     const onSubmitHandler = async (e: React.FormEvent) => {
         e.preventDefault();
-        setLoading(true);
-        setTimeout(() => {
+        try {
+          if(!session?.user){
+            return toast.error('Please Sign In To Use This Feature.');
+          } 
+          else if(!input.trim()){
+            return toast.error('Please Enter a Message');
+          }
+          setLoading(true);
+          const {data} = await api.post('/api/user/project', {initial_prompt: input});
           setLoading(false);
-        },3000)
+          navigate(`/projects/${data.projectId}`);
+        } catch (error: any) {
+          setLoading(false);
+          toast.error(error?.response?.data?.message || error.message);
+          console.log(error);
+        }
+        
+        
     }
 
     return (

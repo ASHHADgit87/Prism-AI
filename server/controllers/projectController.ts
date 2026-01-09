@@ -104,6 +104,23 @@ Return ONLY the enhanced request, nothing else. Keep it concise (1-2 sentences).
         })
         const code = codeGenerationResponse.choices[0].message?.content || '';
 
+        if(!code){
+            await prisma.conversation.create({
+            data: {
+                role: "assistant",
+                content: "I was unable to generate the code. Please try again later.",
+                projectId
+            }
+        })
+        await prisma.user.update({
+            where:{id: userId},
+            data: {
+                credits: { increment: 5 }
+            }
+        })
+            return;
+        }
+
         const version = await prisma.version.create({
             data: {
                 code: code.replace(/```[a-z]*\n?/gi, '').replace(/```$/g, '').trim(),
@@ -118,6 +135,7 @@ Return ONLY the enhanced request, nothing else. Keep it concise (1-2 sentences).
                 content: "I've made the changes to your website! You can now preview it",
                 projectId
             }
+            
         })
         await prisma.websiteProject.update({
               where:{id: projectId},

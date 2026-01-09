@@ -60,7 +60,7 @@ export const createUserProject = async (req:Request, res:Response) => {
         })
         res.json({projectId: project.id});
         const promptEnhanceResponse = await openai.chat.completions.create({
-            model: 'z-ai/glm-4.5-air:free',
+            model: 'google/gemini-2.0-flash-exp:free',
             messages: [
                 {
                     role: 'system',
@@ -101,7 +101,7 @@ Return ONLY the enhanced prompt, nothing else. Make it detailed but concise (2-3
             }
         })
         const codeGenerationResponse = await openai.chat.completions.create({
-            model: 'z-ai/glm-4.5-air:free',
+            model: 'google/gemini-2.0-flash-exp:free',
             messages: [
                 {
                     role: 'system',

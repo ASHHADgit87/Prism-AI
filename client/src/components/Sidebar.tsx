@@ -26,7 +26,20 @@ const Sidebar = ({isMenuOpen,project,setProject,isGenerating,setIsGenerating} : 
         }
     }
     const handleRollBack = async (versionId: string) => {
-        
+        try {
+            const confirm = window.confirm('Are You Sure You Want To Rollback To This Version?');
+            if(!confirm) return;
+            setIsGenerating(true);
+            const {data} = await api.get(`/api/project/rollback/${project.id}/${versionId}`);
+            const {data: data2} = await api.get(`/api/user/project/${project.id}`);
+            toast.success(data.message);
+            setProject(data2.project);
+            setIsGenerating(false);
+        } catch (error: any) {
+            setIsGenerating(false);
+            toast.error(error?.response?.data?.message || error.message);
+            console.log(error);
+        }
     }
     
     const handleRevisions = async (e: React.FormEvent) => {

@@ -1,7 +1,6 @@
-import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react'
+import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react'
 import type { Project } from '../types'
 import { iframeScript } from '../assets/assets';
-import { Edit } from 'lucide-react';
 import EditorPanel from './EditorPanel';
 import LoaderSteps from './LoaderSteps';
 

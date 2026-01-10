@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import type { Project } from '../types';
-import { ArrowBigDownDashIcon, EyeIcon, EyeOffIcon, FullscreenIcon, LaptopIcon, Loader2Icon, MessageSquareIcon, SaveIcon, SmartphoneIcon, TabletIcon, XIcon } from 'lucide-react';
+import { ArrowBigDownDashIcon, EyeIcon, EyeOffIcon, FileMinus, FullscreenIcon, LaptopIcon, Loader2Icon, MessageSquareIcon, SaveIcon, SmartphoneIcon, TabletIcon, XIcon } from 'lucide-react';
 
 import Sidebar from '../components/Sidebar';
 import ProjectPreview from '../components/ProjectPreview';
@@ -34,7 +34,23 @@ const Projects = () => {
      }
   }
   const saveProject = async () => {
-    
+    if(!previewRef.current) return;
+    const code = previewRef.current.getCode();
+    if(!code) return;
+    setIsSaving(true);
+    try {
+      
+      const {data} = await api.put(`/api/project/save/${projectId}`,{code});
+      toast.success(data.message);
+      
+    } catch (error: any) {
+      
+      toast.error(error?.response?.data?.message || error.message);
+      console.log(error);
+    }
+    finally{
+      setIsSaving(false);
+    }
   } 
   // download code (index.html)
   const downloadCode = async () => {

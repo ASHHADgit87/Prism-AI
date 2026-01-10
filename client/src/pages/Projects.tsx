@@ -9,6 +9,7 @@ import type { ProjectPreviewRef } from '../components/ProjectPreview';
 import api from '@/configs/axios';
 import { toast } from 'sonner';
 import { authClient } from '@/lib/auth-client';
+import { set } from 'better-auth';
 
 const Projects = () => {
   const {projectId} = useParams();
@@ -69,7 +70,17 @@ const Projects = () => {
     element.click();
   }
   const togglePublish = async () => {
-    
+    try {
+      
+      const {data} = await api.get(`/api/user/publish-toggle/${projectId}`);
+      toast.success(data.message);
+      setProject((prev) => prev ? ({...prev,isPublished: !prev.isPublished}) : null);
+      
+    } catch (error: any) {
+      
+      toast.error(error?.response?.data?.message || error.message);
+      console.log(error);
+    }
   }
   useEffect(() => {
     if(session?.user){

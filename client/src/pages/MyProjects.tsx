@@ -5,16 +5,22 @@ import { Loader2Icon, PlusIcon, TrashIcon } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { dummyProjects } from '../assets/assets';
 import Footer from '../components/Footer';
+import api from '@/configs/axios';
+import { toast } from 'sonner';
 
 const MyProjects = () => {
     const [loading,setLoading] = useState(true);
     const [projects,setProjects] = useState<Project[]>([]);
     const navigate = useNavigate()
     const  fetchProjects = async () => {
-        setProjects(dummyProjects);
-        setTimeout(()=>{
+        try {
+            const {data} = await api.get('/api/user/projects');
+            setProjects(data.projects);
             setLoading(false);
-        },1000)
+        } catch (error: any) {
+            console.log(error);
+            toast.error(error?.response?.data?.message || error.message);
+        }
     }
     const deleteProject = async (projectId:string) => {
         

@@ -28,10 +28,10 @@
 
 ## 🛠️ Tech Stack
 
-Frontend | React.js, TypeScript, Tailwind CSS, Lucide React 
-Backend | Node.js, Express.js 
-Database | Postgresql
-API Handling | Axios with interceptors 
+- Frontend | React.js, TypeScript, Tailwind CSS, Lucide React 
+- Backend | Node.js, Express.js 
+- Database | Postgresql
+- API Handling | Axios with interceptors 
 
 ## 🚀 Getting Started
 

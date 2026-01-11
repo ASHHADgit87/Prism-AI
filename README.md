@@ -1,1 +1,43 @@
-Prism AIPrism AI is a cutting-edge, AI-powered full-stack web application designed to transform text prompts into fully functional, visually appealing websites. Built with the MERN stack and integrated with advanced AI models, it allows users to generate, edit, and publish web projects in real-time through a conversational interface.✨ Features🎨 Frontend & DesignInteractive AI Chat Sidebar: A seamless interface to describe your website vision or request specific revisions.Real-Time Code Preview: Instantly view the generated website in a secure, isolated iframe environment.Visual Editor Panel: Select any element on the generated page to modify its text content, class names, and CSS styles (padding, margin, font size, colors) via a sleek GUI.Multi-Device Responsiveness: Toggle previews between Desktop, Tablet, and Mobile views to ensure cross-platform compatibility.State-of-the-Art UI/UX: Built with React, Tailwind CSS, and Lucide Icons, featuring a professional dark-green "Prism" theme.⚙️ Backend & AI LogicMERN Stack Core: Robust architecture using Node.js, Express.js, and MongoDB.AI-Driven Generation: Leverages advanced LLMs to interpret user prompts and output clean, production-ready HTML/CSS/JS.Version Control & Rollback: Automatically tracks every revision. Users can view "Booking History" of code changes and rollback to any previous version with a single click.Dynamic Loader Steps: A sophisticated 4-stage loading animation that keeps users informed during the 2-3 minute AI generation process.🔑 Key FunctionalitySmart Onboarding: User authentication powered by Better-Auth (Clerk alternative) with a custom-themed sign-in/sign-up experience.Credit-Based System: Integrated credit management to track AI usage per user.Community Showcase: A public "Community" page where users can explore and view projects published by others.Project Management: A dedicated "My Projects" dashboard to manage personal web creations.Iframe Script Injection: Proprietary logic that injects custom scripts into generated code to enable the "Click-to-Edit" visual manipulation.Snapshot Preview: View specific historical versions of a project in a read-only mode via unique version IDs.🛠️ Tech StackLayerTechnologyFrontendReact.js, TypeScript, Tailwind CSS, Lucide ReactBackendNode.js, Express.jsDatabaseMongoDB with Mongoose ODMAuthenticationBetter-Auth / ClerkState ManagementReact Hooks (UseState, UseEffect, UseRef)API HandlingAxios with interceptors🚀 Getting StartedSign Up: Create an account to receive your starting credits.Describe: Type your website requirements (e.g., "Create a portfolio for a photographer with a dark theme").Wait for AI: Watch the LoaderSteps component build your framework in real-time.Refine: Use the Chat Sidebar for broad changes or the Editor Panel for pixel-perfect adjustments.Publish: Share your creation with the Prism AI community.👨‍💻 Creator & DeveloperMuhammad Ashhadullah Zaheer🔗 LinkedIn: Muhammad Ashhadullah Zaheer
+# Prism AI
+
+**Prism AI** is a cutting-edge, AI-powered full-stack web application designed to transform text prompts into fully functional, visually appealing website frontends. Built with react and express node (tsx and ts) and integrated with advanced AI models, it allows users to generate, edit, and publish web projects in real-time through a conversational interface.
+
+## ✨ Features
+
+- 🎨 **Frontend:**  
+  - Interactive AI Chat Sidebar to describe website vision or request revisions  
+  - Real-Time Code Preview in a secure, isolated iframe environment  
+  - Visual Editor Panel to modify text, class names, and CSS (padding, margin, font size, colors)  
+  - Multi-Device Responsiveness with Desktop, Tablet, and Mobile previews  
+  - State-of-the-Art UI/UX built with React, Tailwind CSS, and Lucide Icons with a professional dark-green "Prism" theme  
+
+- ⚙️ **Backend & AI Logic:**  
+  - MERN Stack Core using Node.js, Express.js.
+  - AI-Driven Generation with advanced LLMs for clean, production-ready HTML/CSS/JS  
+  - Version Control & Rollback for tracking revisions with "Booking History" and single-click restoration  
+  - Dynamic Loader Steps: 4-stage loading animation during the 2-3 minute AI generation process  
+
+## 🔑 Key Functionality
+
+- Smart Onboarding with Better-Auth for custom-themed sign-in/sign-up  
+- Credit-Based System for tracking AI usage per user  
+- Community Showcase page to explore and view projects by others  
+- Project Management via "My Projects" dashboard  
+- Iframe Script Injection for Click-to-Edit visual manipulation  
+- Snapshot Preview to view historical project versions in read-only mode  
+
+## 🛠️ Tech Stack
+
+Frontend | React.js, TypeScript, Tailwind CSS, Lucide React 
+Backend | Node.js, Express.js 
+Database | Postgresql
+API Handling | Axios with interceptors 
+
+## 🚀 Getting Started
+
+https://prism-ai-ashhaddev.vercel.app/ 
+
+## 👨‍💻 Creator & Developer
+
+- **Muhammad Ashhadullah Zaheer**  
+- 🔗 LinkedIn: [Muhammad Ashhadullah Zaheer](https://www.linkedin.com/in/muhammad-ashhadullah-zaheer-41194a340/)

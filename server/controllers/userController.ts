@@ -77,7 +77,7 @@ Enhance this prompt by:
 5. Including interactive elements like buttons, hover effects, and transitions.
 6. Ensuring the website looks professional and visually polished.
 
-Return ONLY the enhanced prompt in 2-3 paragraphs max. Do NOT include markdown, explanations, or code.`,
+Return ONLY the enhanced prompt in 2-3 paragraphs bigger than user's input max. Do NOT include markdown, explanations, or code.`,
         },
         {
           role: "user",

@@ -1,44 +1,83 @@
 # Prism AI
 
-**Prism AI** is a cutting-edge, AI-powered full-stack web application designed to transform text prompts into fully functional, visually appealing website frontends. Built with the express and react (ts and tsx) and integrated with advanced AI models, it allows users to generate, edit, and publish web projects in real-time through a conversational interface.
+**Prism AI** is a cutting-edge, AI-powered full-stack web application designed to transform text prompts into fully functional, visually appealing website frontends. Built with Express.js and React (TypeScript / TSX) and integrated with advanced AI models, it allows users to generate, edit, and publish web projects in real time through a conversational interface.
+
+> **Prism AI is a Software as a Service (SaaS) platform**, delivering AI-powered frontend generation as an on-demand, cloud-hosted service accessible via the web.
+
+---
+
+## ☁️ SaaS Classification
+
+Prism AI follows the **Software as a Service (SaaS)** model by providing centrally hosted functionality that users access through authenticated accounts without local installation.
+
+### SaaS Characteristics Implemented
+
+- 🌐 **Web-Based Service Delivery**  
+  Fully browser-accessible platform with no client-side installation required.
+
+- 👤 **User Authentication & Personalization**  
+  Secure sign-in/sign-up with user-specific dashboards, projects, and usage tracking.
+
+- 💳 **Usage-Based Credit System**  
+  AI generation is controlled through a credit-based consumption model per user.
+
+- 🧩 **Multi-Tenant Architecture**  
+  Multiple users operate simultaneously while maintaining isolated data, projects, and version histories.
+
+- ☁️ **Cloud Hosting & Centralized Management**  
+  Frontend, backend APIs, and database are centrally hosted, enabling continuous updates and maintenance.
+
+- 🔁 **Persistent Storage & Version Control**  
+  Projects, snapshots, and rollback functionality are stored and managed on the server.
+
+> **In summary:** Prism AI provides AI-driven website generation as an on-demand cloud service, making it a complete and modern **SaaS (Software as a Service) application**.
+
+---
 
 ## ✨ Features
 
-- 🎨 **Frontend:**  
-  - Interactive AI Chat Sidebar to describe website vision or request revisions  
-  - Real-Time Code Preview in a secure, isolated iframe environment  
-  - Visual Editor Panel to modify text, class names, and CSS (padding, margin, font size, colors)  
-  - Multi-Device Responsiveness with Desktop, Tablet, and Mobile previews  
-  - State-of-the-Art UI/UX built with React, Tailwind CSS, and Lucide Icons with a professional dark-green "Prism" theme  
+### 🎨 Frontend
+- Interactive AI Chat Sidebar to describe website vision or request revisions  
+- Real-Time Code Preview in a secure, isolated iframe environment  
+- Visual Editor Panel to modify text, class names, and CSS (padding, margin, font size, colors)  
+- Multi-Device Responsiveness with Desktop, Tablet, and Mobile previews  
+- State-of-the-Art UI/UX built with React, Tailwind CSS, and Lucide Icons using a professional dark-green “Prism” theme  
 
-- ⚙️ **Backend & AI Logic:**  
-  - MERN Stack Core using Node.js, Express.js 
-  - AI-Driven Generation with advanced LLMs for clean, production-ready HTML/CSS/JS  
-  - Version Control & Rollback for tracking revisions with "Booking History" and single-click restoration  
-  - Dynamic Loader Steps: 4-stage loading animation during the 2-3 minute AI generation process  
+### ⚙️ Backend & AI Logic
+- PERN Stack core using Node.js and Express.js  
+- AI-driven generation with advanced LLMs for clean, production-ready HTML/CSS/JS  
+- Version control and rollback with booking history and single-click restoration  
+- Dynamic loader with a 4-stage animation during the AI generation process  
+
+---
 
 ## 🔑 Key Functionality
 
-- Smart Onboarding with Better-Auth for custom-themed sign-in/sign-up  
-- Credit-Based System for tracking AI usage per user  
-- Community Showcase page to explore and view projects by others  
-- Project Management via "My Projects" dashboard  
-- Iframe Script Injection for Click-to-Edit visual manipulation  
-- Snapshot Preview to view historical project versions in read-only mode  
+- Smart onboarding with Better-Auth for custom-themed authentication  
+- Credit-based AI usage tracking  
+- Community showcase to explore projects created by other users  
+- Project management via “My Projects” dashboard  
+- Secure iframe script injection for click-to-edit visual manipulation  
+- Read-only snapshot previews of historical versions  
+
+---
 
 ## 🛠️ Tech Stack
 
+- **Frontend:** React.js, TypeScript, Tailwind CSS, Lucide React  
+- **Backend:** Node.js, Express.js  
+- **Database:** PostgreSQL  
+- **API Handling:** Axios with interceptors  
 
-- Frontend | React.js, TypeScript, Tailwind CSS, Lucide React 
-- Backend | Node.js, Express.js 
-- Database | Postgresql
-- API Handling | Axios with interceptors 
+---
 
 ## 🚀 Getting Started
 
 https://prism-ai-ashhaddev.vercel.app/
 
+---
+
 ## 👨‍💻 Creator & Developer
 
 - **Muhammad Ashhadullah Zaheer**  
-- 🔗 LinkedIn: [Muhammad Ashhadullah Zaheer](https://www.linkedin.com/in/muhammad-ashhadullah-zaheer-41194a340/)
+- 🔗 LinkedIn: https://www.linkedin.com/in/muhammad-ashhadullah-zaheer-41194a340/

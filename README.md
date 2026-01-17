@@ -5,6 +5,9 @@
 > **Prism AI is a Software as a Service (SaaS) platform**, delivering AI-powered frontend generation as an on-demand, cloud-hosted service accessible via the web.
 
 ---
+## 🏛️ Architecture
+
+**Prism AI follows a Multi-Tier Client–Server Architecture**, providing a clean separation of concerns for scalability, maintainability, and security.
 
 ## ☁️ SaaS Classification
 
@@ -18,19 +21,11 @@ Prism AI follows the **Software as a Service (SaaS)** model by providing central
 - 👤 **User Authentication & Personalization**  
   Secure sign-in/sign-up with user-specific dashboards, projects, and usage tracking.
 
-- 💳 **Usage-Based Credit System**  
-  AI generation is controlled through a credit-based consumption model per user.
-
-- 🧩 **Multi-Tenant Architecture**  
-  Multiple users operate simultaneously while maintaining isolated data, projects, and version histories.
-
 - ☁️ **Cloud Hosting & Centralized Management**  
   Frontend, backend APIs, and database are centrally hosted, enabling continuous updates and maintenance.
 
 - 🔁 **Persistent Storage & Version Control**  
   Projects, snapshots, and rollback functionality are stored and managed on the server.
-
-> **In summary:** Prism AI provides AI-driven website generation as an on-demand cloud service, making it a complete and modern **SaaS (Software as a Service) application**.
 
 ---
 
@@ -81,3 +76,4 @@ https://prism-ai-ashhaddev.vercel.app/
 
 - **Muhammad Ashhadullah Zaheer**  
 - 🔗 LinkedIn: https://www.linkedin.com/in/muhammad-ashhadullah-zaheer-41194a340/
+

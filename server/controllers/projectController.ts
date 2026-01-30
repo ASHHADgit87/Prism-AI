@@ -43,7 +43,7 @@ export const makeRevisions = async (req: Request, res: Response) => {
       },
     });
     const promptEnhanceResponse = await openai.chat.completions.create({
-      model: "meta-llama/llama-3.3-70b-instruct:free",
+      model: "qwen/qwen-3-coder:free",
       messages: [
         {
           role: "system",
@@ -79,7 +79,7 @@ Return ONLY the enhanced request in 1-2 sentences. Do NOT include markdown, expl
       },
     });
     const codeGenerationResponse = await openai.chat.completions.create({
-      model: "meta-llama/llama-3.3-70b-instruct:free",
+      model: "qwen/qwen-3-coder:free",
       messages: [
         {
           role: "system",

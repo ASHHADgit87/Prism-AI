@@ -63,7 +63,7 @@ export const createUserProject = async (req: Request, res: Response) => {
     });
     res.json({ projectId: project.id });
     const promptEnhanceResponse = await openai.chat.completions.create({
-      model: "qwen/qwen-3-coder:free",
+      model: "xiaomi/mimo-v2-flash",
       messages: [
         {
           role: "system",
@@ -102,7 +102,7 @@ Return ONLY the enhanced prompt in 2-3 paragraphs more than user's input. Do NOT
       },
     });
     const codeGenerationResponse = await openai.chat.completions.create({
-      model: "qwen/qwen-3-coder:free",
+      model: "xiaomi/mimo-v2-flash",
       messages: [
         {
           role: "system",

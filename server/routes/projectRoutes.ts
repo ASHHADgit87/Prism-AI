@@ -20,6 +20,6 @@ projectRouter.get(
 );
 projectRouter.delete("/:projectId", protect, deleteproject);
 projectRouter.get("/preview/:projectId", protect, getProjectPreview);
-projectRouter.get("/published", protect, getPublishedProjects);
+projectRouter.get("/published",  getPublishedProjects);
 projectRouter.get("/published/:projectId", protect, getProjectById);
 export default projectRouter;

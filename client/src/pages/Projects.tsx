@@ -75,6 +75,7 @@ const Projects = () => {
     element.download = "index.html";
     document.body.appendChild(element);
     element.click();
+    document.body.removeChild(element);
   };
 
   const togglePublish = async () => {
@@ -108,8 +109,7 @@ const Projects = () => {
   if (loading) {
     return (
       <div
-        className="flex items-center justify-center h-screen"
-        style={{ backgroundColor: "#004d1a" }}
+        className="flex items-center justify-center h-screen bg-[#004d1a]"
       >
         <Loader2Icon className="size-8 animate-spin text-[#00bfa5]" />
       </div>
@@ -117,26 +117,25 @@ const Projects = () => {
   }
 
   return project ? (
-    <div
-      className="flex flex-col h-screen w-full text-white"
-      style={{ backgroundColor: "#004d1a" }}
-    >
+    <div className="flex flex-col h-screen w-full text-white bg-[#004d1a]">
       {/* Top Bar */}
-      <div className="flex max-sm:flex-col sm:items-center gap-4 px-4 py-2 border-b border-[#00331a] bg-[#003f16]">
+      <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 px-4 py-2 border-b border-[#00331a] bg-[#003f16]">
         {/* Left */}
-        <div className="flex items-center gap-2 sm:min-w-[90px]">
+        <div className="flex items-center gap-2 w-full sm:w-auto">
           <img
             src="/favicon.svg"
             alt="logo"
             className="h-6 cursor-pointer"
             onClick={() => navigate("/")}
           />
-          <div>
+          <div className="truncate">
             <p className="text-sm font-medium truncate">{project.name}</p>
-            <p className="text-xs text-[#9fd9c3]">
+            <p className="text-xs text-[#9fd9c3] truncate">
               Previewing Last Saved Version
             </p>
           </div>
+
+          {/* Mobile Menu Toggle */}
           <div className="sm:hidden flex-1 flex justify-end">
             {isMenuOpen ? (
               <MessageSquareIcon
@@ -152,28 +151,34 @@ const Projects = () => {
           </div>
         </div>
 
-        {/* Device Switch */}
+        {/* Device Switch (Hide on mobile) */}
         <div className="hidden sm:flex gap-2 bg-[#002b12] p-1.5 rounded-md border border-[#00331a]">
           <SmartphoneIcon
             onClick={() => setDevice("phone")}
-            className={`size-6 p-1 rounded cursor-pointer ${device === "phone" ? "bg-[#005c2a]" : ""}`}
+            className={`size-6 p-1 rounded cursor-pointer ${
+              device === "phone" ? "bg-[#005c2a]" : ""
+            }`}
           />
           <TabletIcon
             onClick={() => setDevice("tablet")}
-            className={`size-6 p-1 rounded cursor-pointer ${device === "tablet" ? "bg-[#005c2a]" : ""}`}
+            className={`size-6 p-1 rounded cursor-pointer ${
+              device === "tablet" ? "bg-[#005c2a]" : ""
+            }`}
           />
           <LaptopIcon
             onClick={() => setDevice("desktop")}
-            className={`size-6 p-1 rounded cursor-pointer ${device === "desktop" ? "bg-[#005c2a]" : ""}`}
+            className={`size-6 p-1 rounded cursor-pointer ${
+              device === "desktop" ? "bg-[#005c2a]" : ""
+            }`}
           />
         </div>
 
         {/* Actions */}
-        <div className="flex items-center justify-end gap-3 flex-1 text-xs sm:text-sm">
+        <div className="flex flex-wrap sm:flex-nowrap items-center justify-end gap-2 sm:gap-3 flex-1 text-xs sm:text-sm mt-2 sm:mt-0">
           <button
             onClick={saveProject}
             disabled={isSaving}
-            className="bg-[#00331a] hover:bg-[#004d1a] px-3.5 py-1 flex items-center gap-2 rounded border border-[#005c2a]"
+            className="bg-[#00331a] hover:bg-[#004d1a] px-3 py-1 flex items-center gap-2 rounded border border-[#005c2a]"
           >
             {isSaving ? (
               <Loader2Icon size={16} className="animate-spin" />
@@ -193,46 +198,48 @@ const Projects = () => {
 
           <button
             onClick={downloadCode}
-            className="bg-[#005c2a] hover:bg-[#007a3d] px-3.5 py-1 flex items-center gap-2 rounded"
+            className="bg-[#005c2a] hover:bg-[#007a3d] px-3 py-1 flex items-center gap-2 rounded"
           >
             <ArrowBigDownDashIcon size={16} /> Download
           </button>
 
           <button
             onClick={togglePublish}
-            className="bg-[#005c2a] hover:bg-[#007a3d]
-    px-3.5 py-1 flex items-center gap-2
-    rounded border border-[#00331a]
-    transition-colors"
+            className="bg-[#005c2a] hover:bg-[#007a3d] px-3 py-1 flex items-center gap-2 rounded border border-[#00331a] transition-colors"
           >
-            {project.isPublished ? (
-              <EyeOffIcon size={16} />
-            ) : (
-              <EyeIcon size={16} />
-            )}
+            {project.isPublished ? <EyeOffIcon size={16} /> : <EyeIcon size={16} />}
             {project.isPublished ? "Unpublish" : "Publish"}
           </button>
         </div>
       </div>
 
-      {/* Main */}
-      <div className="flex-1 flex overflow-auto">
-        <Sidebar
-          isMenuOpen={isMenuOpen}
-          project={project}
-          setProject={(p) => setProject(p)}
-          isGenerating={isGenerating}
-          setIsGenerating={setIsGenerating}
-        />
-        <div className="flex-1 p-2 pl-0 bg-[#00331a]">
-          <ProjectPreview
-            ref={previewRef}
-            project={project}
-            device={device}
-            isGenerating
-          />
-        </div>
-      </div>
+      {/* Main Area */}
+<div className="flex flex-1 flex-col sm:flex-row overflow-auto">
+  {/* Sidebar */}
+  {(!isMenuOpen || window.innerWidth >= 640) && (
+    <Sidebar
+      isMenuOpen={isMenuOpen}
+      project={project}
+      setProject={(p) => setProject(p)}
+      isGenerating={isGenerating}
+      setIsGenerating={setIsGenerating}
+    />
+  )}
+
+  {/* Preview */}
+  <div
+    className={`bg-[#00331a] p-2 sm:pl-0 min-h-[300px] 
+      ${isMenuOpen ? "flex-1" : "w-full"}`}
+  >
+    <ProjectPreview
+      ref={previewRef}
+      project={project}
+      device={device}
+      isGenerating={isGenerating}
+    />
+  </div>
+</div>
+
     </div>
   ) : (
     <div className="flex items-center justify-center h-screen bg-[#004d1a]">

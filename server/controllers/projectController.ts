@@ -43,7 +43,7 @@ export const makeRevisions = async (req: Request, res: Response) => {
       },
     });
     const promptEnhanceResponse = await openai.chat.completions.create({
-      model: "xiaomi/mimo-v2.5",
+      model: "xiaomi/mimo-v2.5-pro",
       messages: [
         {
           role: "system",
@@ -79,7 +79,7 @@ Return ONLY the enhanced request in 1-2 sentences. Do NOT include markdown, expl
       },
     });
     const codeGenerationResponse = await openai.chat.completions.create({
-      model: "xiaomi/mimo-v2.5",
+      model: "xiaomi/mimo-v2.5-pro",
       messages: [
         {
           role: "system",

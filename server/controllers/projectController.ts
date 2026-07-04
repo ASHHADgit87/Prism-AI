@@ -43,7 +43,7 @@ export const makeRevisions = async (req: Request, res: Response) => {
       },
     });
     const promptEnhanceResponse = await openai.chat.completions.create({
-      model: "xiaomi/mimo-v2.5-pro",
+      model: "xiaomi/mimo-v2.5",
       messages: [
         {
           role: "system",
@@ -79,11 +79,11 @@ Return ONLY the enhanced request in 1-2 sentences. Do NOT include markdown, expl
       },
     });
     const codeGenerationResponse = await openai.chat.completions.create({
-      model: "xiaomi/mimo-v2.5-pro",
+      model: "xiaomi/mimo-v2.5",
       messages: [
         {
           role: "system",
-          content: `You are an expert web developer. Apply the user's requested changes to create a **professional, modern, visually appealing website**.
+          content: `you have to make frotnedn wihtin 2 mintues no extra time .You are an expert web developer. Apply the user's requested changes to create a **professional, modern, visually appealing website**.
 
 CRITICAL REQUIREMENTS:
 - Update the existing HTML code "${currentProject.current_code}" according to the enhanced prompt "${enhancedPrompt}".
